@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app='app'>
+<link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/css/main.css">
+<link rel="stylesheet" type="text/css" href="/css/navbar.css">
+
+<head>
+    <title></title>
+</head>
+
+<body ng-controller='globalController as g'>
+    <nav>
+        <a ui-sref='home'>Home</a>
+        <a ui-sref='login'>login</a>
+    </nav>
+    <ui-view></ui-view>
+</body>
+<script src='angular/angular.js'></script>
+<script src='angular-ui-router/release/angular-ui-router.js'></script>
+<script src="/javascript/app.js"></script>
+<!-- Controllers -->
+<script src="/javascript/controllers/globalController.js"></script>
+
+</html>

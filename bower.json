@@ -1,0 +1,23 @@
+{
+  "name": "connectr",
+  "description": "",
+  "main": "server.js",
+  "authors": [
+    "josemedina760 <josemedina760@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/josemedina760/bakeryStore",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.6",
+    "angular": "~1.4.8"
+  }
+}
