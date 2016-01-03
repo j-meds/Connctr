@@ -4,12 +4,17 @@ angular.module('app', ['ui.router'])
 Config.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 function Config($stateProvider, $urlRouterProvider){
-	$stateProvider.state('home', {
+	$stateProvider.state('Home', {
 		url: '/',
 		templateUrl: 'templates/home.html'
-	}).state('login', {
+	}).state('Register', {
+		url: '/register',
+		templateUrl: 'templates/register.html',
+		controller: 'userController as vm'
+	}).state('Login', {
 		url: '/login',
-		templateUrl: 'templates/login.html'
+		templateUrl: 'templates/login.html',
+		controller: 'userController as vm'
 	});
 	$urlRouterProvider.otherwise('/');
 };

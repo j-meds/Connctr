@@ -1,1 +1,10 @@
-<h1>login mate</h1>
+<div class="container">
+    <form class="col-md-6 col-md-offset-3" ng-submit='vm.login(vm.user)'>
+        <label>email</label>
+        <input ng-model='vm.user.email' type="email" class="form-control" required>
+        <label>password</label>
+        <input ng-model='vm.user.password' type="password" class="form-control" required>
+        <br>
+        <input type="submit" class="form-control btn-primary">
+    </form>
+</div>

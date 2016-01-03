@@ -1,6 +1,9 @@
-angular.module('app')
-.controller('globalController', globalController);
+(function(){
+	angular.module('app')
+	.controller('globalController', globalController);
+	globalController.$inject = [];
 
-function globalController($scope){
-	$scope.hello = 'welcome mate';
-};
+	function globalController(){
+		var vm = this;
+	};
+})();

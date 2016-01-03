@@ -1,4 +1,5 @@
 var express = require('express');
+var passport = require('passport');
 var bodyParser = require('body-parser');
 var app = express();
 var path = require('path');
@@ -6,6 +7,11 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var mongoose = require('mongoose');
 var port = process.env.PORT || 3000;
+
+// models
+require('./models/user'); 
+//routes
+var userRoutes = require('./routes/userRoutes');
 
 // MongoLabs sets the correct URI in the environment
 var db = process.env.MONGOLAB_URI || 'mongodb://localhost/connectr' ;
@@ -21,6 +27,9 @@ app.engine('.html', require('ejs').renderFile);
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/bower_components'));
 
+// passport setup
+app.use(passport.initialize());
+
 app.set('view engine', 'html');
 
 app.get('/', function(req, res) {
@@ -30,6 +39,9 @@ app.get('/', function(req, res) {
 //middleware that allows for us to parse JSON and UTF-8 from the body of an HTTP request
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+
+app.use('/api/user', userRoutes);
 
 
 
