@@ -5,6 +5,7 @@ var jwt = require('jsonwebtoken');
 var UserSchema = mongoose.Schema({
 	email: {type: String, lowercase: true, unique: true},
 	passwordHash: String,
+	salt: String,
 	name: {type:String, lowercase: true},
 	created: Date,
 	Inbox: [{type: mongoose.Schema.Types.ObjectId, ref: 'Inbox'}],
@@ -21,8 +22,12 @@ var UserSchema = mongoose.Schema({
 // 	}, 'secret');
 // }
 
-// UserSchema.methods.setPassword = function(password){
-// 	this.salt = crypto.randomBytes(64)
-// }
-
+UserSchema.methods.setPassword = function(password){
+	this.salt = crypto.randomBytes(64);
+	this.passwordHash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString();
+};
+UserSchema.methods.checkPassword = function(password){
+	var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
+	return hash === this.passwordHash;
+}
 mongoose.model('User', UserSchema);

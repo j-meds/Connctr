@@ -14,6 +14,16 @@
 			})
 			return q.promise;
 		}
+		o.loginUser = function(user){
+			var q = $q.defer();
+			$http.post('/api/user/login', user).success(function(res){
+				for(var i = 0; i < arguments.length; i++){
+					console.log(arguments[i]);
+				}
+				q.resolve(res);
+			})
+			return q.promise;
+		}
 
 		return o;
 	};
